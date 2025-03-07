@@ -1,0 +1,5 @@
+FROM 963123326764.dkr.ecr.ap-southeast-2.amazonaws.com/wazuh-manager-new:v12
+
+COPY ./authd.pass /var/ossec/etc/authd.pass
+RUN chmod 640 /var/ossec/etc/authd.pass
+RUN chown root:wazuh /var/ossec/etc/authd.pass
