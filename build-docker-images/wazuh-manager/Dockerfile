@@ -46,6 +46,9 @@ COPY ./config/wazuh_indexer_ssl_certs/root-ca-manager.pem /etc/ssl/root-ca.pem
 COPY ./config/wazuh_indexer_ssl_certs/wazuh-manager.pem /etc/ssl/filebeat.pem
 COPY ./config/wazuh_indexer_ssl_certs/wazuh-manager-key.pem /etc/ssl/filebeat.key
 COPY ./config/wazuh_cluster/wazuh_manager.conf /wazuh-config-mount/etc/ossec.conf
+COPY ./config/wazuh_cluster/authd.pass /var/ossec/etc/authd.pass
+RUN chmod 640 /var/ossec/etc/authd.pass
+RUN chown root:wazuh /var/ossec/etc/authd.pass
 
 RUN chown -R $USER:$GROUP /wazuh-config-mount/etc/
 RUN chown -R $USER:$GROUP /etc/ssl/
